@@ -1,0 +1,11 @@
+.card-container {
+    display: flex;
+    flex-flow: row wrap;/*Para crear otro*/
+  }
+  
+  .card-content {
+    width: 180px;
+    box-sizing: border-box;
+    margin: 16px;
+    cursor: pointer;
+  }
