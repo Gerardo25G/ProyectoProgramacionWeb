@@ -20,7 +20,7 @@ export class ProductEditComponent implements OnInit {
     precio:new FormControl('')
   });
 
-  codigo: string | "0";
+  codigo: string | any;
 
   constructor(private route:ActivatedRoute,private service:ProductsService) {}
 
