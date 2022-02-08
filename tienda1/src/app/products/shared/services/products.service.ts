@@ -22,9 +22,13 @@ export class ProductsService {
     return this.httpClient.post<Product>(url,product);
   }
 
-  get(id:string):Observable<Product>{
-    let url = "http://localhost:8080/tiendademo/ws/productos";
+  getEdit(id:number):Observable<Product>{
+    let url = "http://localhost:8080/tiendademo/ws/productos/edit/";
     return this.httpClient.get<Product>(url+id);
   }
 
+  update(product: Product):Observable<Product>{
+    let url = "http://localhost:8080/tiendademo/ws/productos";
+    return this.httpClient.put<Product>(url,product);
+  }
 }
