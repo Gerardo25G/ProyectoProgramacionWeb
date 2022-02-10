@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+<<<<<<< HEAD
 import { DomSanitizer } from '@angular/platform-browser';
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../shared/models/product';
 import { ProductsService } from '../shared/services/products.service';
@@ -12,11 +15,14 @@ import { ProductsService } from '../shared/services/products.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+<<<<<<< HEAD
 
   public archivos: any =[]
   public previsualizacion : string | undefined ;
   bandera: boolean | undefined;
   ban:string | undefined ;
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
   
   form: FormGroup = new FormGroup({
     //id:new FormControl(''),
@@ -25,25 +31,39 @@ export class ProductEditComponent implements OnInit {
     color:new FormControl(''),
     marca:new FormControl(''),
     cantidad:new FormControl(''),
+<<<<<<< HEAD
     precio:new FormControl(''),
     imagen:new FormControl('')
+=======
+    precio:new FormControl('')
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
   });
 
    id:number | any;
 
+<<<<<<< HEAD
   constructor(private route:ActivatedRoute,private service:ProductsService, private router : Router, private snackBar: MatSnackBar,private sanitizer: DomSanitizer) { }
+=======
+  constructor(private route:ActivatedRoute,private service:ProductsService, private router : Router, private snackBar: MatSnackBar) { }
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id') //Vamos a tener clave Valor
+<<<<<<< HEAD
 
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
     this.service.getEdit(this.id)
       .subscribe(product =>{
         console.log('product',product);
         this.form.patchValue(product);
         
       });
+<<<<<<< HEAD
       
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
   }
 
   submit(){
@@ -51,10 +71,13 @@ export class ProductEditComponent implements OnInit {
     if(this.form.valid){
       const product=this.form.value;
       product.id=this.id;
+<<<<<<< HEAD
       if(this.bandera){
         product.imagen=this.ban;
       }
       
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
       console.log('Actualizar',product);
       this.service.update(product)
         .subscribe(result=> console.log('Actualizado Finalizado',result));
@@ -70,6 +93,7 @@ export class ProductEditComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+<<<<<<< HEAD
 
   capturarFile(event: any):any{
     //let a: string;
@@ -109,4 +133,6 @@ export class ProductEditComponent implements OnInit {
     }
   })
 
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 }

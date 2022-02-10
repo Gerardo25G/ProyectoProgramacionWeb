@@ -6,7 +6,10 @@ import { EMPTY } from 'rxjs';
 import { Product } from '../shared/models/product';
 import { FormControl, FormGroup } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
+<<<<<<< HEAD
 import { DomSanitizer } from '@angular/platform-browser';
+=======
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 
 @Component({
   selector: 'ed-product-add',
@@ -15,6 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class ProductAddComponent implements OnInit {
 
+<<<<<<< HEAD
   public archivos: any =[]
   public previsualizacion : string | undefined ;
   ban:string | undefined ;
@@ -22,16 +26,27 @@ export class ProductAddComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     //id:new FormControl(''),
+=======
+  form: FormGroup = new FormGroup({
+    id:new FormControl(''),
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
     nombre:new FormControl(''),
     descripcion:new FormControl(''),
     color:new FormControl(''),
     marca:new FormControl(''),
     cantidad:new FormControl(''),
+<<<<<<< HEAD
     precio:new FormControl(''),
     imagen:new FormControl()
   });
 
   constructor(private service: ProductsService, private router: Router, private snackBar: MatSnackBar,private sanitizer: DomSanitizer) { }
+=======
+    precio:new FormControl('')
+  });
+
+  constructor(private service: ProductsService, private router: Router, private snackBar: MatSnackBar) { }
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 
   ngOnInit(): void {
 
@@ -42,10 +57,15 @@ export class ProductAddComponent implements OnInit {
   submit() {
     if(this.form.valid){
       const product = this.form.value;
+<<<<<<< HEAD
       product.imagen=this.ban
       console.log('Going to save', product);
       
       //this.subirArchivo(product);
+=======
+      
+      console.log('Going to save', product);
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
       this.service.add(product)
         .subscribe(resul=>{
             console.log('Producto Agregado')
@@ -58,12 +78,35 @@ export class ProductAddComponent implements OnInit {
       }else{
         console.error('Producto no creado')
       }
+<<<<<<< HEAD
       
+=======
+
+
+        // .pipe(
+        //   catchError(error => {
+        //     this.snackBar.open(error, null, {
+        //       duration: 3000
+        //     });
+        //     // catch & replace
+        //     return EMPTY;
+        //   })
+        // )
+        // .subscribe(result => {
+        //   console.log('The product has been added', result);
+        //   this.router.navigate(['']);
+        //   // mensaje de confirmacion
+        //   this.snackBar.open('Product has been added', 'Close', {
+        //     duration: 3000// milliseconds
+        //   });
+        // });
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
   }
 
   cancel() {
     this.router.navigate(['']);
   }
+<<<<<<< HEAD
 
 
   capturarFile(event: any):any{
@@ -120,3 +163,7 @@ export class ProductAddComponent implements OnInit {
   //}
 
 }
+=======
+}
+;
+>>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
