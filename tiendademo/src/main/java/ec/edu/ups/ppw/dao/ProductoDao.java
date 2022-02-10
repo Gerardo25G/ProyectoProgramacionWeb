@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -14,6 +16,8 @@ import ec.edu.ups.ppw.model.Producto;
 public class ProductoDao {
 	
 	@PersistenceContext
+//	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("producto");
+//    private EntityManager em = emf.createEntityManager();
 	private EntityManager em;
 	
 	public void insert(Producto producto) {
@@ -24,13 +28,13 @@ public class ProductoDao {
 		em.merge(producto);
 	}
 	
-	public Producto read(String nombre) {
-		Producto producto = em.find(Producto.class, nombre);
+	public Producto read(int id) {
+		Producto producto = em.find(Producto.class, id);
 		return producto;
 	}
 	
-	public void delete(String nombre) {
-		Producto producto = em.find(Producto.class, nombre);
+	public void delete(int id) {
+		Producto producto = em.find(Producto.class, id);
 		em.remove(producto);
 	}
 	
@@ -38,6 +42,7 @@ public class ProductoDao {
 		String jpql="Select p From Producto p";
 		
 		Query q = em.createQuery(jpql, Producto.class);
+		
 		return q.getResultList();
 	}
 	
@@ -49,5 +54,6 @@ public class ProductoDao {
 		q.setParameter(1,filtro);
 		return q.getResultList();
 	}
+	
 
 }

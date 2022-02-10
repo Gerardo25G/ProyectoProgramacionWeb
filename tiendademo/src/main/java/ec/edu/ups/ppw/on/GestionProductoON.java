@@ -15,11 +15,11 @@ public class GestionProductoON {
 	public ProductoDao daoproducto;
 	
 	
-	public void guardarPersona(Producto producto) {
+	public void guardarProducto(Producto producto) {
 		
-		Producto porducto = daoproducto.read(producto.getNombre());
+		Producto p = daoproducto.read(producto.getId());
 		
-		if(producto==null)
+		if(p==null)
 			daoproducto.insert(producto);
 		else
 			daoproducto.update(producto);
@@ -36,9 +36,15 @@ public class GestionProductoON {
 		
 	}
 	
-	public Producto getProducto(String nombre) {
-		Producto producto = daoproducto.read(nombre);
+	public Producto getProducto(int id) {
+		Producto producto = daoproducto.read(id);
 		return producto;
 	}
+	
+	public String eliminar(int id) {
+		daoproducto.delete(id);
+		return "Eliminado";
+	}
+	
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { User } from '../../models/user';
+
 
 @Component({
   selector: 'ed-login',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+
+  form:FormGroup = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+  });
+
+  constructor(private router: Router){
+
+  }
 
   ngOnInit(): void {
+  }
+
+  submit(){
+    if(this.form.valid){
+      console.log('Submit',this.form.value)
+      this.validateLogin(this.form.value)
+    }
+  }
+
+  private validateLogin(user:User){
+    if(user.username==='admin' && user.password === 'admin'){
+      //redireccion
+      this.router.navigate([''])
+    }else{
+      console.error('Invalido')
+    }
   }
 
 }

@@ -1,6 +1,9 @@
-package ec.edu.ups.ppw.model;
+  package ec.edu.ups.ppw.model;
 
+import javax.annotation.Generated;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -8,21 +11,24 @@ import javax.persistence.OneToOne;
 @Entity
 public class Producto {
 	
-	//private static final long serialVersionUID=1L;
+	
+	private static final long serialVersionUID=1L;
 	
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	int id;
 	private String nombre;
 	private String descripcion;
 	private String color;
 	private String marca;
 	private int cantidad;
 	private double precio;
+	private String imagen;
 	
 	
-//	@OneToOne
-//	@JoinColumn(name="tip_cat_codigo")
-//	private CategoriaTienda categTienda;
+	//@OneToOne
+	//@JoinColumn(name="tip_cat_codigo")
+	//private CategoriaTienda categTienda;
 	
 	
 	public int getId() {
@@ -67,6 +73,14 @@ public class Producto {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	
+	
 	
 
 
