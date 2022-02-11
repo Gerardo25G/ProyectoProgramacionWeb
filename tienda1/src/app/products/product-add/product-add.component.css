@@ -1,5 +1,4 @@
 :host {
-<<<<<<< HEAD
   display: flex;
   justify-content: center;
 }
@@ -30,35 +29,3 @@ mat-card-content {
 mat-card-actions {
   margin: 10px;
 }
-=======
-    display: flex;
-    justify-content: center;
-  }
-  
-  mat-card,
-  form {
-    margin: 10px;
-    width: 100%;
-  }
-  
-  img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 200px;
-  }
-  
-  mat-form-field {
-    width: 100%;
-  }
-  
-  mat-card-title,
-  mat-card-content {
-    display: flex;
-    justify-content: center;
-  }
-  
-  mat-card-actions {
-    margin: 10px;
-  }
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-=======
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 import { Product } from '../shared/models/product';
 import { ProductsService } from '../shared/services/products.service';
 
@@ -16,11 +13,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] | undefined;
 
-<<<<<<< HEAD
   constructor(private service: ProductsService, private router : Router, private snackBar: MatSnackBar) { }
-=======
-  constructor(private service: ProductsService) { }
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 
   ngOnInit(): void {
 
@@ -31,7 +24,6 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
 submit(id: any){
   this.router.navigate(['/','edit', id]);
 }
@@ -54,6 +46,4 @@ private loadProducts(){
 
 
 }
-=======
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
 }

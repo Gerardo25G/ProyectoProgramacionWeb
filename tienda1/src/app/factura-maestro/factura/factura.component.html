@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="progress" *ngIf="cargar">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Facturas en el Sistema</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success" (click)="submit()">Agregar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <th scope="col">N°</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Subtotal</th>
+                    <th scope="col">Iva</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Producto</th>
+                </thead>
+                <tbody>
+                     <tr *ngFor="let factura of facturas">
+                        <th scope="row">{{factura.numero}}</th>
+                        <th scope="row">{{factura.fecha}}</th>
+                        <th scope="row">{{factura.subtotal}}</th>
+                        <th scope="row">{{factura.iva}}</th>
+                        <th scope="row">{{factura.total}}</th>
+                        <th scope="row"></th>
+                        <th scope="row"> 
+                              <ul *ngFor="let producto of factura.detallesList">
+                                <li>Producto:{{producto.producto.id}}</li>
+                                <li>Descripcion:{{producto.producto.descripcion}}</li>
+                                <li>Color:{{producto.producto.color}}</li>
+                                <li>Marca:{{producto.producto.marca}}</li>
+                                <li>Cantidad:{{producto.producto.cantidad}}</li>
+                                <li>Precio:{{producto.producto.precio}}</li>
+                            </ul>  
+                        </th>
+                        <th scope="row">
+                            <button type="button" class="btn btn-danger" > Eliminar </button>
+                        </th>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

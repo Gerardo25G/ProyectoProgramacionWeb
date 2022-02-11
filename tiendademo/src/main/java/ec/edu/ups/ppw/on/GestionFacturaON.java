@@ -6,7 +6,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.ups.ppw.dao.FacturaDao;
+import ec.edu.ups.ppw.dao.FacturaDetallesDao;
 import ec.edu.ups.ppw.model.Factura;
+import ec.edu.ups.ppw.model.FacturaDetalle;
 
 
 @Stateless 
@@ -15,21 +17,34 @@ public class GestionFacturaON {
 	@Inject
 	public FacturaDao daofactura;
 	
+	@Inject
+	public FacturaDetallesDao daofacturaDetalle;
 	
-public void guardarFactura(Factura factura) {
+	
+public Factura guardarFactura(Factura factura ) {
 		
 	Factura f = daofactura.read(factura.getNumero());
 	
-	List<FacturaDetalle> detalle = factura.getDetalles()
+//	List<FacturaDetalle> detalle = factura.getDetallesList();
+//	factura.setDetallesList(null);
 		
 		if(f==null)
 			daofactura.insert(factura);
 		else
 			daofactura.update(factura);
-
+	
+//	for (FacturaDetalle det:detalle) {
+//		det.setFac_numero(factura.getNumero());
+//	}
+//	daofacturaDetalle.insert(detalle);
+//	factura.setDetallesList(detalle);
+	
+	return  factura;
+	
 	}
 	
 	public List<Factura> getFacturas(){
+		
 		return daofactura.getList();
 	}
 	

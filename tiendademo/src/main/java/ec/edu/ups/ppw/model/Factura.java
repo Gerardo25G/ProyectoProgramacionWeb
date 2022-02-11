@@ -1,9 +1,12 @@
 package ec.edu.ups.ppw.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -16,6 +19,9 @@ public class Factura {
 	
 	private static final long serialVersionUID=1L;
 	
+	
+	
+	//User Rol
 	
 	@Id
 	private int numero;
@@ -34,8 +40,8 @@ public class Factura {
 	
 	
 	//Una Factura tiene Muchos Detalles
-	@OneToMany
-	@JoinColumn(name="fac_numero")
+	@OneToMany(mappedBy = "factura",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	//@JoinColumn(name="fac_numero")
 	private List<FacturaDetalle> detallesList;
 	
 	public int getNumero() {
@@ -80,6 +86,19 @@ public class Factura {
 	public void setDetallesList(List<FacturaDetalle> detallesList) {
 		this.detallesList = detallesList;
 	}
+	
+	public void addDetalle (FacturaDetalle detalle) {
+
+        if (detallesList==null) {
+
+        	detallesList =(new ArrayList<FacturaDetalle>());
+
+        	detallesList.add(detalle);
+
+        }
+    }
+	
+	
 	
 	
 	

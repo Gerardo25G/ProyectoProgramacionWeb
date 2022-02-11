@@ -10,9 +10,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import ec.edu.ups.ppw.dao.FacturaDetallesDao;
 import ec.edu.ups.ppw.model.Factura;
+import ec.edu.ups.ppw.model.FacturaDetalle;
 import ec.edu.ups.ppw.model.Producto;
 import ec.edu.ups.ppw.on.GestionFacturaON;
+
+
 
 @Path("factura")
 public class FacturaServiceRest {
@@ -22,13 +26,18 @@ public class FacturaServiceRest {
 	private GestionFacturaON factOn;
 	
 	
+	
+	
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)// 
 	@Produces(MediaType.APPLICATION_JSON)//"application/json"
 	public Respuesta crearProducto(Factura factura) {
 		//Guardad Factura
-
+		
 		Respuesta res=new Respuesta();
+		
+		
 				
 		try {
 			
@@ -49,7 +58,11 @@ public class FacturaServiceRest {
 	@Produces(MediaType.APPLICATION_JSON)//"application/json"
 	//Trae todas las facturas
 	public List<Factura> getFactura(){
+		
+	
 		List<Factura> facturas = factOn.getFacturas();	
+		
+
 		return facturas;
 	}
 	

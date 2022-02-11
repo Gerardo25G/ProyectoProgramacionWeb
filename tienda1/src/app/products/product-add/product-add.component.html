@@ -1,24 +1,10 @@
-<<<<<<< HEAD
 
 <mat-card>
-    <ed-toolbar></ed-toolbar>
-    <h2></h2>
     <mat-card-title>ADD NEW Products</mat-card-title>
      <img mat-card-image [src]="form.value.imagen"> <!--Se Renderiza la Imagen  -->
     <mat-card-content>
         <form [formGroup]="form">
             <mat-form-field>
-=======
-<mat-card>
-    <mat-card-title>ADD NEW Products</mat-card-title>
-    <!-- <img mat-card-image [src]="form.value.thumbImage"> Se Renderiza la Imagen  -->
-    <mat-card-content>
-        <form [formGroup]="form">
-            <mat-form-field>
-                <input type="text" matInput placeholder="IDa" formControlName="id">
-            </mat-form-field>
-            <mat-form-field>
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
                 <input type="text" matInput placeholder="Nombre" formControlName="nombre">
             </mat-form-field>
             <mat-form-field>
@@ -36,7 +22,6 @@
             <mat-form-field>
                 <input type="text" matInput placeholder="Marca" formControlName="marca">
             </mat-form-field>
-<<<<<<< HEAD
             <mat-form-field>
                 <input type="text" matInput placeholder="" formControlName="imagen" >
                  <div>
@@ -46,21 +31,12 @@
                     <img  [src]="previsualizacion" alt="" >
                 </div>
             </mat-form-field>
-=======
-            <!-- <mat-form-field>
-                <input type="text" matInput placeholder="Thumb Image URL" formControlName="thumbImage">
-            </mat-form-field> -->
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
         </form>
     </mat-card-content>
     <mat-card-actions>
         <button (click)="submit()" mat-raised-button color="primary">ADD</button>
         <button (click)="cancel()" mat-raised-button >Cancel</button>
     </mat-card-actions>
-<<<<<<< HEAD
 
 
 </mat-card>
-=======
-</mat-card>
->>>>>>> 87cd3a8a1609a0f96342073c847a032f862f79a1
