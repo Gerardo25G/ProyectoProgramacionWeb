@@ -76,7 +76,7 @@ export class ProductEditComponent implements OnInit {
     this.bandera=true;
     let a=event.target.value;
     this.ban=a.slice(12);
-    console.log(this.ban);
+    //console.log(this.ban);
     const archivoCapturado = event.target.files[0]
     this.extraerBase64(archivoCapturado).then((image: any) => {
     this.previsualizacion = image.base;

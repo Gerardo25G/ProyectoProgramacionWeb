@@ -12,10 +12,10 @@ import { User } from '../../models/user';
 export class LoginComponent implements OnInit {
 
 
-  form:FormGroup = new FormGroup({
-    username: new FormControl(''),
+  form = new FormGroup({
+    //user: new FormControl(''),
     password: new FormControl('')
-  });
+  })
 
   constructor(private router: Router){
 
@@ -23,21 +23,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
   submit(){
-    if(this.form.valid){
-      console.log('Submit',this.form.value)
-      this.validateLogin(this.form.value)
-    }
+    console.log(this.form.value)
+    //this.router.navigate(['/det'])
   }
 
   private validateLogin(user:User){
     if(user.username==='admin' && user.password === 'admin'){
       //redireccion
-      this.router.navigate([''])
+      this.router.navigate(['/'])
     }else{
       console.error('Invalido')
     }
   }
+
+  crear(){
+    this.router.navigate(['/crea'])
+  }
+  
 
 }

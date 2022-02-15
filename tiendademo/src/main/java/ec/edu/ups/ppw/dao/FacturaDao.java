@@ -47,34 +47,33 @@ public class FacturaDao {
 		em=emf.createEntityManager();
 		List<Factura> facturas= new ArrayList<Factura>();
 		
+		//Factura fac = em.find(Factura.class,1);
+		
+		//System.out.println("sadasd " + fac.getSubtotal() );
+		
 		//String jpql="Select p From Factura p ";
-		for(int i=1; i<=getList1(); i++) {
+		for(int i=1; i<=getCountID(); i++) {
 			Factura fac = em.find(Factura.class,i);	
 			facturas.add(fac);
 		}
-		
 
-		
-		
-		
 //		List<FacturaDetalle> detallesList= fac.getDetallesList();
 //		
 //		for(FacturaDetalle detalle: detallesList) {
 //			System.out.println("asdasd"+ detalle.toString());
 //		}
-		
-		
-		
-		System.out.println("dasdasdEEEEEE"  + getList1());
+		//System.out.println("dasdasdEEEEEE"  + getList1());
 		return facturas;
 	}
 	
 	
-	public long getList1(){
+	public long getCountID(){
 		String jpql="Select Count(numero) From Factura a ";
 		em=emf.createEntityManager();
 		
+		
 		long q = (long) em.createQuery(jpql).getSingleResult();
+		System.out.println("asdasd  "+ q);
 		
 		return q;
 	}
@@ -86,5 +85,6 @@ public class FacturaDao {
 				.setParameter(1,1);
 		return q.getResultList();
 	}
+	
 
 }

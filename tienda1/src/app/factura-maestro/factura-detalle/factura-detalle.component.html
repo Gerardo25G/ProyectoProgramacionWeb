@@ -1,32 +1,174 @@
-<mat-card>
-    <mat-card-title>Crear Factura</mat-card-title>
-    <mat-card-content>
-        <form [formGroup]="form">
-            <mat-form-field>
-                <input type="text" matInput placeholder="Numero" formControlName="numero">
-            </mat-form-field>
-            <mat-form-field>
-                <input type="Date" matInput placeholder="Fecha" formControlName="fecha">
-            </mat-form-field>
-            <mat-form-field>
-                <input type="number" matInput placeholder="Subtotal" formControlName="subtotal">
-            </mat-form-field>
-            <mat-form-field>
-                <input type="number" matInput placeholder="Iva" formControlName="iva">
-            </mat-form-field>
-            <mat-form-field>
-                <input type="number" matInput placeholder="Total" formControlName="total">
-            </mat-form-field>
-           
-        </form>
-    </mat-card-content>
-    <mat-card-actions>
-        <button (click)="submit()" mat-raised-button color="primary">ADD</button>
-        <button (click)="cancel()" mat-raised-button >Cancel</button>
-    </mat-card-actions>
+
+    <mat-card >
+        <ed-toolbar></ed-toolbar>
+        <mat-card-title>Factura</mat-card-title>
+        <div>
+            <form [formGroup]="form">
+                <!-- <mat-form-field>
+                    <input type="number" matInput placeholder="Numero" formControlName="numero">
+                </mat-form-field> -->
+                <p>Fecha:</p> 
+                <mat-form-field>
+                    <input type="text"  readonly="readonly" matInput placeholder={{hoy1}}> 
+                </mat-form-field>
+                <p>SubTotal:</p> 
+                <mat-form-field>
+                    <input type="number" readonly="readonly" matInput placeholder={{enSubTotal}} >
+                </mat-form-field>
+                <p>Iva:</p> 
+                <mat-form-field>
+                    <input type="text"  readonly="readonly" matInput placeholder={{enIvaFac}} >
+                </mat-form-field>
+                <p>Total:</p> 
+                <mat-form-field>
+                    
+                    <input type="text"  readonly="readonly" matInput placeholder={{enTotal}} >
+                </mat-form-field>
+            </form>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <thead>
+                            <th scope="col">Produto</th>
+                            <th scope="col">Descripcion</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Iva</th>
+                            <th scope="col">Total</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let detalle of detalles; let indice=index;" >
+                                <th scope="row"> {{detalle.producto?.id}}</th>
+                                <th scope="row"> {{detalle.producto?.descripcion}}</th>
+                                <th scope="row"> {{detalle.cantidad}}</th>
+                                <th scope="row"> {{detalle.precio}}</th>
+                                <th scope="row"> {{detalle.subtotal}}</th>
+                                <th scope="row"> {{detalle.iva}}</th>
+                                <th scope="row"> {{detalle.total}}</th>
+                                <th scope="row">
+                                    <button type="button" class="btn btn-danger" (click)="EliminarProducto(indice)"> Eliminar </button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <mat-card-actions>
+            <!-- <button (click)="submit()" mat-raised-button color="primary">ADD</button>-->
+            <button (click)="guardar()" mat-raised-button >Guardar</button> 
+        </mat-card-actions>
+        
+
+
+    <div class="card-container">
+        <mat-card class="card-content" *ngFor="let product of products">
+            
+            <mat-card-header>
+                <mat-card-title>{{product.nombre}}</mat-card-title>
+                <mat-card-subtitle>Descripcion: {{product.descripcion}}</mat-card-subtitle>
+                <mat-card-subtitle>Marca: {{product.marca}}</mat-card-subtitle>
+                <mat-card-subtitle>Color: {{product.color}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-imag  src="./assets/{{product.imagen}}" style="width: 150px; height: 150px;"> 
+            <!-- <img mat-card-image *ngIf="product.imagen" [src]="product.imagen"> -->
+            <mat-card-content>
+                <p >Cantidad: {{product.cantidad}}</p>
+                <p >Precio:{{product.precio | currency}}</p>
+                
+            </mat-card-content>
+            
+            <mat-card-actions>
+                <div>
+                    <form [formGroup]="form">
+                        <input type="number" placeholder="Cantidad" formControlName="cantidad">
+                    </form>
+                </div>
+                <button mat-button (click)="comprar(product.id)">Comprar</button>
+                <!-- <p>{{can_pro}}</p> -->
+            </mat-card-actions>
+        </mat-card>
+        
+    </div>
+
+
 
 
 </mat-card>
+
+
+
+
+<!-- <div class="container"> 
+    <div class="progress" *ngIf="cargar">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"
+        role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"> </div>
+    </div>
+     <div class="row">
+        <div class="col-md-12">
+            <h1>Crear Facturas</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-success" (click)="consultar()">Agregar</button>
+        </div>
+    </div>
+
+    <form (ngSubmit)="guardar()" id="formulario">
+        <div class="form-group">
+            <label>Numero</label>
+            <input type="number" matInput placeholder="Cantidad" formControlName="numero">
+        </div> -->
+        <!-- <div class="form-group">
+            <label >Fecha:</label>
+            <input type="Date" class="form-control" [(ngModel)]="fecha" >
+        </div>
+        <div class="form-group">
+            <label >Subtotal:</label>
+            <input type="number" class="form-control" [(ngModel)]="subtotal" >
+        </div>
+        <div class="form-group">
+            <label >Iva:</label>
+            <input type="number" class="form-control" [(ngModel)]="iva" >
+        </div>
+        <div class="form-group">
+            <label >Total:</label>
+            <input type="number" class="form-control" [(ngModel)]="total" >
+        </div> -->
+        <!-- <hr>
+        <div class="row">
+            <div class="col-md-3">
+                <label >Productos:</label>
+            </div>
+            <div class="col-md-9">
+                <button type="button" class="btn btn-warning" (click)="add()"> Agregar Productor </button>
+            </div>
+        </div> -->
+        <!-- <div class="row" *ngFor="let producto of factura.detallesList">
+            <div class="btn btn-warning" (click)="delete(producto)">Delete</div>
+            <div class="form-group">
+                <label >Catidad</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.cantidad" >
+            </div>
+            <div class="form-group">
+                <label >Iva</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.iva">
+            </div>
+            <div class="form-group">
+                <label >Subtotal:</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.subtotal" >
+            </div>
+            <div class="form-group">
+                <label >Total:</label>
+                <input type="number" class="form-control" [(ngModel)]="producto.total">
+            </div>
+        </div> -->
+    <!-- </form>
+</div> -->
 
 
 	

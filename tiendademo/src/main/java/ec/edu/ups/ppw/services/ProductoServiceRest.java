@@ -59,7 +59,6 @@ public class ProductoServiceRest {
 	@Produces(MediaType.APPLICATION_JSON)//"application/json"
 	public List<Producto> getProducto(){
 		List<Producto> productos = ProdOn.getProductos();
-		
 		return productos;
 	}
 	
@@ -91,8 +90,8 @@ public class ProductoServiceRest {
 	public void EliminarProducto(@PathParam("id") int id) {
 		//instrucciones de la funcionalidad
 		System.out.println("dasdasd " +id);
+		
 		ProdOn.eliminar(id);
-
 	}
 	
 	

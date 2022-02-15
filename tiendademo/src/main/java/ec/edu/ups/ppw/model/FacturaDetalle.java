@@ -2,6 +2,7 @@ package ec.edu.ups.ppw.model;
 
 import java.util.List;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -36,6 +37,7 @@ public class FacturaDetalle {
 	@JoinColumn(name="pro_codigo")
 	private Producto producto;
 	
+	@JsonbTransient // javax.json.bind.annotation.JsonbTransient
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="fac_numero")
 	private Factura factura;
@@ -115,6 +117,15 @@ public class FacturaDetalle {
 
 	public void setProducto(Producto producto) {
 		this.producto = producto;
+	}
+
+	public Factura getFactura() {
+		return factura;
+	}
+
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
 	}
 
 

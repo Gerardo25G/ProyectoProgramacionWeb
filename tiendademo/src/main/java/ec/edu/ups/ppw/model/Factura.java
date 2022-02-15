@@ -7,10 +7,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.json.*;
 
 
 
@@ -34,16 +40,21 @@ public class Factura {
 	
 	
 	//Una Persona Tiene una factura 
-//	@OneToOne
-//	@JoinColumn(name="per_cedula")
-//	private Persona cliente;
+	@OneToOne
+	@JoinColumn(name="per_cedula")
+	private Persona cliente;
 	
 	
 	//Una Factura tiene Muchos Detalles
-	@OneToMany(mappedBy = "factura",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	
+	@OneToMany( mappedBy = "factura", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("detallesList")
 	//@JoinColumn(name="fac_numero")
 	private List<FacturaDetalle> detallesList;
 	
+	
+	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -97,6 +108,9 @@ public class Factura {
 
         }
     }
+
+	
+	
 	
 	
 	

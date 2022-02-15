@@ -29,6 +29,8 @@
 	   <class>ec.edu.ups.ppw.model.Factura</class>
 	   <class>ec.edu.ups.ppw.model.FacturaDetalle</class>
 	   <class>ec.edu.ups.ppw.model.Producto</class>
+	   <class>ec.edu.ups.ppw.model.Persona</class>
+	   <class>ec.edu.ups.ppw.model.Comentario</class>
    
    
   
@@ -38,8 +40,8 @@
              Hibernate property instead:
              <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          -->
-         <!-- <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
-         <property name="javax.persistence.schema-generation.database.action" value="update"/>
+         <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+          <!--<property name="javax.persistence.schema-generation.database.action" value="update"/>-->
          <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
          <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
 

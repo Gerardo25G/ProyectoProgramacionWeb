@@ -59,6 +59,13 @@ public Factura guardarFactura(Factura factura ) {
 		return "Eliminado";
 	}
 	
+	public int getCountid() {
+		int dato= (int)daofactura.getCountID();
+		return dato;
+	}
+	
+	
+	
 	
 
 }

@@ -1,12 +1,12 @@
 import { FacturaDetalles } from "./facturadetalles";
 
-export interface Factura {
-    numero:number;
-	fecha:Date;
-	subtotal:number;
-	iva:number;
-	total:number;
-	anulado:boolean;
-	detallesList: FacturaDetalles;
+export class Factura {
+    numero:number | undefined;
+	fecha:Date | undefined;
+	subtotal:number | undefined;
+	iva:number | undefined;
+	total:number | undefined;
+	anulado:boolean | undefined;
+	detallesList: FacturaDetalles[] | undefined;
     //imagen:string;
 }

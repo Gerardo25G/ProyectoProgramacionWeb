@@ -12,6 +12,7 @@ import { FacturaMaestroModule } from './factura-maestro/factura-maestro.module';
 import { FacturaMaestroComponent } from './factura-maestro/factura-maestro.component';
 import { FacturaComponent } from './factura-maestro/factura/factura.component';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     ProductsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule
 
   ],
   providers: [],

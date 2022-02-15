@@ -8,6 +8,20 @@
     <mat-menu #menu>
       <button mat-menu-item [routerLink]="['/', 'add']">Agregar Productos </button>
       <button mat-menu-item [routerLink]="['/', 'list']">Listar Productos </button>
+      <button mat-menu-item [routerLink]="['/', 'log']">Salir </button>
+      <!-- <button mat-menu-item (click)="llevar()" >{{Opciones}}</button> -->
     </mat-menu>
   
   </mat-toolbar>
+
+
+
+  <!-- <button mat-button [routerLink]="['/login']" >
+    {{nombre}}
+</button>
+<mat-menu #menu>
+        <button class="boton" (click)="llevar()" >{{menuOpcion}}</button>
+</mat-menu>
+<button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more-vert</mat-icon>
+</button> -->

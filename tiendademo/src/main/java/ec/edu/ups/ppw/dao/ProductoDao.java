@@ -1,5 +1,6 @@
 package ec.edu.ups.ppw.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,6 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.ups.ppw.model.Factura;
 import ec.edu.ups.ppw.model.Producto;
 
 
@@ -19,6 +21,8 @@ public class ProductoDao {
 //	private EntityManagerFactory emf = Persistence.createEntityManagerFactory("producto");
 //    private EntityManager em = emf.createEntityManager();
 	private EntityManager em;
+	
+	private static EntityManagerFactory emf= Persistence.createEntityManagerFactory("tiendademoPersistenceUnit");
 	
 	public void insert(Producto producto) {
 		em.persist(producto);
@@ -39,11 +43,21 @@ public class ProductoDao {
 	}
 	
 	public List<Producto> getList(){
-		String jpql="Select p From Producto p";
+
+		em=emf.createEntityManager();
+		List<Producto> productos= new ArrayList<Producto>();
 		
-		Query q = em.createQuery(jpql, Producto.class);
+		//Factura fac = em.find(Factura.class,1);
 		
-		return q.getResultList();
+		//System.out.println("sadasd " + fac.getSubtotal() );
+		
+		//String jpql="Select p From Factura p ";
+		for(int i=1; i<=getCountID(); i++) {
+			Producto pro = em.find(Producto.class,i);	
+			productos.add(pro);
+		}
+		return productos;
+		
 	}
 	
 	public List<Producto> getListXNombre(String filtro){
@@ -53,6 +67,16 @@ public class ProductoDao {
 		Query q = em.createQuery(jpql, Producto.class);
 		q.setParameter(1,filtro);
 		return q.getResultList();
+	}
+	
+	
+	public long getCountID(){
+		String jpql="Select Count(id) From Producto a ";
+		em=emf.createEntityManager();
+
+		long q = (long) em.createQuery(jpql).getSingleResult();
+		
+		return q;
 	}
 	
 

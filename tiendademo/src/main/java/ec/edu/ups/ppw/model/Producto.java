@@ -1,12 +1,19 @@
   package ec.edu.ups.ppw.model;
 
+import java.util.List;
+
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Producto {
@@ -25,10 +32,12 @@ public class Producto {
 	private double precio;
 	private String imagen;
 	
+	@OneToMany( mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnoreProperties("detallesProducto")
+	//@JoinColumn(name="fac_numero")
+	private List<Comentario> detallesProducto;
 	
-	//@OneToOne
-	//@JoinColumn(name="tip_cat_codigo")
-	//private CategoriaTienda categTienda;
+
 	
 	
 	public int getId() {
@@ -79,6 +88,12 @@ public class Producto {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
+//	public List<Comentario> getDetallesProducto() {
+//		return detallesProducto;
+//	}
+//	public void setDetallesProducto(List<Comentario> detallesProducto) {
+//		this.detallesProducto = detallesProducto;
+//	}
 	
 	
 	

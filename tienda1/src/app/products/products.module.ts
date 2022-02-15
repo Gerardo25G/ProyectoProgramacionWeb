@@ -11,6 +11,8 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductListClienteComponent } from './product-list-cliente/product-list-cliente.component';
+import { ProductComentariosComponent } from './product-comentarios/product-comentarios.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     ProductListComponent,
     ProductFormComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductListClienteComponent,
+    ProductComentariosComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     HttpClientModule,
     MaterialModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
     
   ]
 })
